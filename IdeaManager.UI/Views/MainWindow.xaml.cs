@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace IdeaManager.UI.Views
 {
     /// <summary>
-    /// Logique d'interaction pour IdeaFormView.xaml
+    /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class IdeaFormView : Page
+    public partial class MainWindow : Window
     {
-        public IdeaFormView(IdeaFormViewModel ideaFormViewModel)
+        public MainWindow()
         {
             InitializeComponent();
-            DataContext = ideaFormViewModel;
         }
     }
 }

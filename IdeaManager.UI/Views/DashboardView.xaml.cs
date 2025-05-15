@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IdeaManager.UI.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour DashboardView.xaml
-    /// </summary>
     public partial class DashboardView : Page
     {
         public DashboardView()
         {
             InitializeComponent();
+        }
+
+        private void OnSubmitIdeaClick(object sender, RoutedEventArgs e)
+        {
+            var view = App.ServiceProvider.GetRequiredService<IdeaFormView>();
+            MainFrame.Navigate(view);
+        }
+
+        private void OnViewListClick(object sender, RoutedEventArgs e)
+        {
+            var view = App.ServiceProvider.GetRequiredService<IdeaListView>();
+            MainFrame.Navigate(view);
         }
     }
 }
