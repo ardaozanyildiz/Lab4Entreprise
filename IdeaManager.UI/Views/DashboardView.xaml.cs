@@ -13,14 +13,14 @@ namespace IdeaManager.UI.Views
 
         private void OnSubmitIdeaClick(object sender, RoutedEventArgs e)
         {
-            var view = App.ServiceProvider.GetRequiredService<IdeaFormView>();
-            MainFrame.Navigate(view);
+            MainFrame.Navigate(new IdeaFormView());
         }
 
         private void OnViewListClick(object sender, RoutedEventArgs e)
         {
-            var view = App.ServiceProvider.GetRequiredService<IdeaListView>();
-            MainFrame.Navigate(view);
+            MainFrame.Navigate(new IdeaListView());
         }
+
+       
     }
 }
