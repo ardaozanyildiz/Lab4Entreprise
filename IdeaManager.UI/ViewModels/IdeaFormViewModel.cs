@@ -28,10 +28,8 @@ public partial class IdeaFormViewModel : ObservableValidator
     [RelayCommand]
     private async Task SubmitAsync()
     {
-        ValidateAllProperties();
-        if (HasErrors)
-            return;
-
+       
+      
         var idea = new Idea
         {
             Title = Title,
@@ -44,6 +42,7 @@ public partial class IdeaFormViewModel : ObservableValidator
             MessageBox.Show("Idée enregistrée avec succès !");
             Title = string.Empty;
             Description = string.Empty;
+            MessageBox.Show("dfgdg");
         }
         catch (System.Exception ex)
         {

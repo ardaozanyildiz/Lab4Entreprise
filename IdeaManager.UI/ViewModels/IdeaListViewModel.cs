@@ -1,31 +1,39 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.ComponentModel;
 using IdeaManager.Core.Entities;
+using IdeaManager.Core.Interfaces;
 
 
 namespace IdeaManager.UI.ViewModels
 {
-    public class IdeaListViewModel : INotifyPropertyChanged
+    public class IdeaListViewModel : ObservableObject
     {
+        private readonly IIdeaService _ideaService;
         public ObservableCollection<Idea> Ideas { get; set; }
 
-        public IdeaListViewModel()
+        public IdeaListViewModel(IIdeaService ideaService)
         {
-            // Liste d'exemple je vais le remplacer plus tard par un service ou une base de données que la mme a offer
-            Ideas = new ObservableCollection<Idea>
-            {
-                new Idea { Title = "Améliorer l'interface", Description = "Ajouter des animations modernes" },
-                new Idea { Title = "Créer une FAQ", Description = "Répondre aux questions courantes" },
-                new Idea { Title = "Ajouter un mode sombre", Description = "Meilleure lisibilité la nuit" }
-            };
+            _ideaService = ideaService;
+
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public async Task GetTaskAsync()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (_ideaService == null)
+            {
+                return;
+            }
+            else
+            {
+                var ideas = await _ideaService.GetAllAsync();
+                foreach (var idea in ideas)
+                {
+                    ideas.Add(idea);
+                }
+            }
+
+
         }
     }
 }

@@ -20,10 +20,10 @@ namespace IdeaManager.UI.Views
     /// </summary>
     public partial class IdeaFormView : Page
     {
-        public IdeaFormView()
+        public IdeaFormView(IdeaFormViewModel ideaFormViewModel)
         {
             InitializeComponent();
-           
+           DataContext = ideaFormViewModel;
         }
     }
 }
