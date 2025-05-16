@@ -10,6 +10,9 @@ using IdeaManager.Core.Interfaces;
 
 public partial class IdeaFormViewModel : ObservableValidator
 {
+    [ObservableProperty]
+    private int num = 200;
+
     private readonly IIdeaService _ideaService;
 
     public IdeaFormViewModel(IIdeaService ideaService)
@@ -29,8 +32,7 @@ public partial class IdeaFormViewModel : ObservableValidator
     private async Task SubmitAsync()
     {
        
-      
-        var idea = new Idea
+      var idea = new Idea
         {
             Title = Title,
             Description = Description
